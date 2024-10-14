@@ -1,20 +1,16 @@
+# app.py
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from task_agent import agent  # Import the microagent from task_agent.py
 
 app = Flask(__name__)
-CORS(app)
 
-tasks = []
-
+# Route to create a task
 @app.route('/tasks', methods=['POST'])
-def add_task():
-    task = request.json
-    tasks.append(task)
-    return jsonify(task), 201
+def create_task():
+    task_data = request.json
+    agent.trigger_event("new_task", task_data)  # Trigger the microagent event
+    return jsonify({'status': 'Task created'}), 201
 
-@app.route('/tasks', methods=['GET'])
-def get_tasks():
-    return jsonify(tasks), 200
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
+

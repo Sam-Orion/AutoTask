@@ -34,3 +34,16 @@ We learned much about multi-agent systems and the challenges of building real-ti
 ## What's next for AutoTask
 
 Next, we plan to enhance AutoTask's AI-driven suggestions, improve integration with more productivity tools, and expand its delegation capabilities for larger teams. We also aim to implement advanced analytics so users can track their productivity and receive personalized recommendations for improvement.
+
+
+# Smart Task Manager Agent (STMA) with Fetch.AI Microagents
+
+This project integrates Fetch.AI microagents into a task management system for autonomous task handling and decentralized communication.
+
+## Setup Instructions
+
+### Step 1: Install Dependencies
+Make sure you have installed the required dependencies:
+
+```bash
+pip install -r requirements.txt
