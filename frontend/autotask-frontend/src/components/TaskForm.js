@@ -1,4 +1,4 @@
-// TaskForm.js
+
 import axios from 'axios';
 import React, { useState } from 'react';
 
@@ -8,7 +8,7 @@ const TaskForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://127.0.0.1:5000/tasks', task);  // Post task to Flask backend
+      await axios.post('http://127.0.0.1:5000/tasks', task);  
       alert('Task added successfully');
     } catch (error) {
       console.error('Error adding task:', error);
