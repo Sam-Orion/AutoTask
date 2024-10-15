@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';  // Import Link
+import { useNavigate, Link } from 'react-router-dom';  
 
 const SignUp = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -17,7 +17,7 @@ const SignUp = () => {
     try {
       await axios.post('http://127.0.0.1:5000/register', credentials);
       alert('Registration successful! Please log in.');
-      navigate('/login');  // Redirect to login page after successful registration
+      navigate('/login'); 
     } catch (err) {
       console.error('Registration failed:', err);
       setError('Username already exists!');
