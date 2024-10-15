@@ -8,11 +8,11 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-app.config['JWT_SECRET_KEY'] = 'your-secret-key'  # Replace with a secure key!
+app.config['JWT_SECRET_KEY'] = 'your-secret-key'  
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
-# In-memory user storage (you can use a database later)
+
 users = {}
 
 @app.route('/register', methods=['POST'])
@@ -24,7 +24,7 @@ def register():
     if username in users:
         return jsonify({'msg': 'User already exists'}), 400
 
-    # Hash the password before storing it
+
     hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
     users[username] = hashed_password
 
@@ -36,12 +36,12 @@ def login():
     username = data.get('username')
     password = data.get('password')
 
-    # Validate user credentials
+
     user_password = users.get(username)
     if not user_password or not bcrypt.check_password_hash(user_password, password):
         return jsonify({'msg': 'Invalid credentials'}), 401
 
-    # Create JWT access token
+ 
     access_token = create_access_token(identity=username)
     return jsonify({'access_token': access_token}), 200
 
